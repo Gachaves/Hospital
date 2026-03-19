@@ -48,14 +48,12 @@ class Program
         consulta1.Concluir("Dor de cabeça leve");
         consulta2.Concluir("Febre alta");
 
-        // Receitas
         Receita receita1 = new Receita();
         receita1.AdicionarMedicamento("Paracetamol", "500mg");
 
         Receita receita2 = new Receita();
         receita2.AdicionarMedicamento("Ibuprofeno", "400mg");
 
-        // Emitir receitas (IMPORTANTE: vincular à consulta)
         medico1.EmitirReceita(consulta1, receita1);
         consulta1.Receita = receita1;
         receita1.Consulta = consulta1;
