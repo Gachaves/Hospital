@@ -6,7 +6,7 @@ public class Medico
 {
     public string Nome { get; set; }
 
-    private List<Consulta> consultas = new List<Consulta>(); // ✅ lista real
+    private List<Consulta> consultas = new List<Consulta>(); 
 
     public List<Consulta> ListarConsultas()
     {

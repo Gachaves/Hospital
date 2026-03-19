@@ -8,7 +8,6 @@ class Program
     {
         Hospital hospital = new Hospital();
 
-        // Pacientes
         Paciente paciente1 = new Paciente("joao@.com");
         paciente1.Nome = "João";
 
@@ -81,6 +80,10 @@ class Program
             Console.WriteLine("Médico   : " + c.Medico.Nome);
             Console.WriteLine("Data     : " + c.Data);
             Console.WriteLine("Status   : " + (c.Concluida ? "Concluída" : "Pendente"));
+            if (c.Concluida)
+            {
+                Console.WriteLine("Resumo   : " + c.GetResumo()); 
+            }
 
             if (c.Receita != null)
             {

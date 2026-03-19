@@ -28,8 +28,8 @@ public class Receita
         if (Consulta != null)
         {
             Console.WriteLine("Paciente: " + Consulta.Paciente.Nome);
-            Console.WriteLine("Médico  : " + Consulta.Medico.Nome);
-            Console.WriteLine("Data    : " + Consulta.Data);
+            Console.WriteLine("Médico: " + Consulta.Medico.Nome);
+            Console.WriteLine("Data: " + Consulta.Data);
         }
 
         Console.WriteLine("\nMedicamentos:");
