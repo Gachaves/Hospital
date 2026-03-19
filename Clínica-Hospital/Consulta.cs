@@ -5,7 +5,6 @@ namespace Clínica_Hospital
 {
     public class Consulta
     {
-        // Propriedades acessadas pelo Program.cs
         public string Data { get; set; }
         public Paciente Paciente { get; set; }
         public Medico Medico { get; set; }
