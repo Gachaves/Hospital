@@ -8,6 +8,7 @@ namespace Clínica_Hospital
 {
     public class Paciente
     {
+        public string Nome { get; set; }    
         private string contato;
         private List<Consulta> consultas = new List<Consulta>();
 
