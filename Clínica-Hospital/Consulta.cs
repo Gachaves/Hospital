@@ -1,27 +1,36 @@
-﻿public class Consulta
+﻿using System;
+using Clínica_Hospital;
+
+namespace Clínica_Hospital
 {
-    public string Data { get; set; }
-    public Paciente Paciente { get; set; }
-    public Medico Medico { get; set; }
-    public bool Concluida { get; set; }
+    public class Consulta
+    {
+        // Propriedades acessadas pelo Program.cs
+        public string Data { get; set; }
+        public Paciente Paciente { get; set; }
+        public Medico Medico { get; set; }
+        public bool Concluida { get; set; }
+        public Receita Receita { get; set; }
+        private string resumo;
 
-    
-    public void Marcar(Paciente paciente, Medico medico, string data)
-    {
-        this.Paciente = paciente; 
-        this.Medico = medico;     
-        this.Data = data;
-        this.Concluida = false;
-        Console.WriteLine($"Vínculo estabelecido: {paciente.Nome} <-> {medico.Nome} para o dia {data}.");
-    }
+        public void Marcar(Paciente paciente, Medico medico, string data)
+        {
+            this.Paciente = paciente;
+            this.Medico = medico;
+            this.Data = data;
+            this.Concluida = false;
+            Console.WriteLine($"Vínculo estabelecido: {paciente.Nome} <-> {medico.Nome} para o dia {data}.");
+        }
+        public void Concluir(string resumo)
+        {
+            this.resumo = resumo;
+            this.Concluida = true;
+            Console.WriteLine($"Consulta concluída com sucesso. Resumo: {resumo}");
+        }
 
-    public void Concluir(string resumo)
-    {
-        this.Concluida = true;
-        Console.WriteLine($"Consulta concluída com sucesso. Resumo: {resumo}");
-    }
-    public string GetResumo()
-    {
-        return $"Consulta de {Paciente.Nome} com Dr. {Medico.Nome} em {Data}. Status: {(Concluida ? "Finalizada" : "Pendente")}";
+        public string GetResumo()
+        {
+            return this.resumo;
+        }
     }
 }
