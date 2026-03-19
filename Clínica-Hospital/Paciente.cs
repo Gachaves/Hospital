@@ -16,7 +16,6 @@ namespace Clínica_Hospital
             this.contato = contato;
         }
 
-        // Agendar consulta conforme UML
         public void AgendarConsulta(Medico m, string data)
         {
             Consulta c = new Consulta();
@@ -24,13 +23,11 @@ namespace Clínica_Hospital
             consultas.Add(c);
         }
 
-        // Listar consultas
         public List<Consulta> ListarConsultas()
         {
             return consultas;
         }
 
-        // Atualizar contato
         public void AtualizarContato(string contato)
         {
             this.contato = contato;
