@@ -1,5 +1,4 @@
 ﻿using System;
-using Clínica_Hospital;
 
 namespace Clínica_Hospital
 {
@@ -10,6 +9,7 @@ namespace Clínica_Hospital
         public Medico Medico { get; set; }
         public bool Concluida { get; set; }
         public Receita Receita { get; set; }
+
         private string resumo;
 
         public void Marcar(Paciente paciente, Medico medico, string data)
@@ -18,13 +18,13 @@ namespace Clínica_Hospital
             this.Medico = medico;
             this.Data = data;
             this.Concluida = false;
-            Console.WriteLine($"Vínculo estabelecido: {paciente.Nome} <-> {medico.Nome} para o dia {data}.");
+            this.resumo = null;
         }
+
         public void Concluir(string resumo)
         {
             this.resumo = resumo;
             this.Concluida = true;
-            Console.WriteLine($"Consulta concluída com sucesso. Resumo: {resumo}");
         }
 
         public string GetResumo()
