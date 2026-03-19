@@ -1,38 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Clínica_Hospital;
 
-namespace Clínica_Hospital
+public class Receita
 {
-    public class Receita
+    private List<string> medicamentos = new List<string>();
+
+    public Consulta Consulta { get; set; } 
+
+    public void AdicionarMedicamento(string nome, string dose)
     {
-        private List<string> medicamentos = new List<string>();
+        medicamentos.Add(nome + " - " + dose);
+    }
 
-        public void AdicionarMedicamento(string nome, string dose)
+    public void RemoverMedicamento(string nome)
+    {
+        medicamentos.RemoveAll(m => m.Contains(nome));
+    }
+
+    public List<string> ListarMedicamentos()
+    {
+        return medicamentos;
+    }
+
+    public void MostrarReceita()
+    {
+        Console.WriteLine("\n=== RECEITA MÉDICA ===");
+
+        if (Consulta != null)
         {
-            medicamentos.Add(nome + " " + dose);
+            Console.WriteLine("Paciente: " + Consulta.Paciente.Nome);
+            Console.WriteLine("Médico  : " + Consulta.Medico.Nome);
+            Console.WriteLine("Data    : " + Consulta.Data);
         }
 
-        public void RemoverMedicamento(string nome)
+        Console.WriteLine("\nMedicamentos:");
+        foreach (string m in medicamentos)
         {
-            List<string> novaLista = new List<string>();
-
-            for (int i = 0; i < medicamentos.Count; i++)
-            {
-                if (medicamentos[i] != nome)
-                {
-                    novaLista.Add(medicamentos[i]);
-                }
-            }
-
-            medicamentos = novaLista;
+            Console.WriteLine("- " + m);
         }
 
-        public List<string> ListarMedicamentos()
-        {
-            return medicamentos;
-        }
+        Console.WriteLine("======================\n");
     }
 }
