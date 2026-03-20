@@ -1,4 +1,6 @@
-﻿public class Medico
+﻿using Clínica_Hospital;
+
+public class Medico
 {
     public string Nome { get; set; }
 
@@ -8,16 +10,13 @@
     }
     public List<Consulta> ListarConsultas() => new List<Consulta>();
 
-    public void EmitirReceita(Consulta consulta, Receita receita)
-    {
-        
-        if (consulta.Concluida)
+        public void EmitirReceita(Consulta consulta, Receita receita)
         {
-            Console.WriteLine($"Receita emitida pelo Dr. {Nome} para o paciente {consulta.Paciente.Nome}.");
-        }
-        else
-        {
-            Console.WriteLine("ERRO: Não é possível emitir receita para uma consulta não concluída.");
+            if (consulta.Concluida)
+            {
+                consulta.Receita = receita;   
+                receita.Consulta = consulta;  
+            }
         }
     }
-}
+
