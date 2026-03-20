@@ -24,7 +24,7 @@ namespace Clínica_Hospital
             pacientes.Add(paciente);
         }
 
-        public void RegistrarConsulta(Consulta consulta)
+        public void CadastrarConsulta(Consulta consulta)
         {
             consultas.Add(consulta);
         }

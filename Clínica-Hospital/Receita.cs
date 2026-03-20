@@ -21,23 +21,5 @@ public class Receita
         return medicamentos;
     }
 
-    public void MostrarReceita()
-    {
-        Console.WriteLine("\n=== RECEITA MÉDICA ===");
-
-        if (Consulta != null)
-        {
-            Console.WriteLine("Paciente: " + Consulta.Paciente.Nome);
-            Console.WriteLine("Médico: " + Consulta.Medico.Nome);
-            Console.WriteLine("Data: " + Consulta.Data);
-        }
-
-        Console.WriteLine("\nMedicamentos:");
-        foreach (string m in medicamentos)
-        {
-            Console.WriteLine("- " + m);
-        }
-
-        Console.WriteLine("======================\n");
-    }
+   
 }
