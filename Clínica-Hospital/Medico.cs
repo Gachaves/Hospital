@@ -1,10 +1,6 @@
-﻿
-namespace Clínica_Hospital;
-
-public class Medico
+﻿public class Medico
 {
     public string Nome { get; set; }
-
 
     public void AgendarAtendimento(Paciente paciente, string data)
     {
@@ -14,11 +10,14 @@ public class Medico
 
     public void EmitirReceita(Consulta consulta, Receita receita)
     {
-
+        
         if (consulta.Concluida)
         {
-            consulta.Receita = receita;
-            receita.Consulta = consulta;
+            Console.WriteLine($"Receita emitida pelo Dr. {Nome} para o paciente {consulta.Paciente.Nome}.");
+        }
+        else
+        {
+            Console.WriteLine("ERRO: Não é possível emitir receita para uma consulta não concluída.");
         }
     }
 }
