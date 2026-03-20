@@ -76,6 +76,10 @@ class Program
             Console.WriteLine("Médico   : " + c.Medico.Nome);
             Console.WriteLine("Data     : " + c.Data);
             Console.WriteLine("Status   : " + (c.Concluida ? "Concluída" : "Pendente"));
+            if (c.Concluida)
+            {
+                Console.WriteLine("Resumo   : " + c.GetResumo()); 
+            }
 
             if (c.Concluida)
             {
