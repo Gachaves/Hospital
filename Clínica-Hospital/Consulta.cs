@@ -19,6 +19,7 @@ namespace Clínica_Hospital
             this.Data = data;
             this.Concluida = false;
             this.resumo = null;
+            Console.WriteLine($"Vínculo estabelecido: {paciente.Nome} <-> {medico.Nome} para o dia {data}.");
         }
 
         public void Concluir(string resumo)

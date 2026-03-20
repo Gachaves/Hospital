@@ -8,7 +8,7 @@ class Program
     {
         Hospital hospital = new Hospital();
 
-        // Pacientes
+
         Paciente paciente1 = new Paciente("joao@.com");
         paciente1.Nome = "João";
 
@@ -18,12 +18,10 @@ class Program
         hospital.CadastrarPaciente(paciente1);
         hospital.CadastrarPaciente(paciente2);
 
-        // Médicos
-        Medico medico1 = new Medico();
-        medico1.Nome = "Dr. Silva";
+    
 
-        Medico medico2 = new Medico();
-        medico2.Nome = "Dra. Ana";
+        Medico medico1 = new Medico { Nome = "Dr. Silva" };
+        Medico medico2 = new Medico { Nome = "Dra. Ana" };
 
         hospital.CadastrarMedico(medico1);
         hospital.CadastrarMedico(medico2);
@@ -31,6 +29,7 @@ class Program
         Console.WriteLine("=================================");
         Console.WriteLine("      SISTEMA DO HOSPITAL");
         Console.WriteLine("=================================\n");
+
 
         Consulta consulta1 = new Consulta();
         consulta1.Marcar(paciente1, medico1, "20/03/2026");
@@ -41,28 +40,22 @@ class Program
         Consulta consulta3 = new Consulta();
         consulta3.Marcar(paciente1, medico2, "21/03/2026");
 
-        hospital.RegistrarConsulta(consulta1);
-        hospital.RegistrarConsulta(consulta2);
-        hospital.RegistrarConsulta(consulta3);
+        hospital.CadastrarConsulta(consulta1);
+        hospital.CadastrarConsulta(consulta2);
+        hospital.CadastrarConsulta(consulta3);
+
 
         consulta1.Concluir("Dor de cabeça leve");
         consulta2.Concluir("Febre alta");
 
-        // Receitas
         Receita receita1 = new Receita();
         receita1.AdicionarMedicamento("Paracetamol", "500mg");
 
         Receita receita2 = new Receita();
         receita2.AdicionarMedicamento("Ibuprofeno", "400mg");
 
-        // Emitir receitas (IMPORTANTE: vincular à consulta)
         medico1.EmitirReceita(consulta1, receita1);
-        consulta1.Receita = receita1;
-        receita1.Consulta = consulta1;
-
         medico2.EmitirReceita(consulta2, receita2);
-        consulta2.Receita = receita2;
-        receita2.Consulta = consulta2;
 
 
         Console.WriteLine("\n=================================");
@@ -84,19 +77,23 @@ class Program
             Console.WriteLine("Data     : " + c.Data);
             Console.WriteLine("Status   : " + (c.Concluida ? "Concluída" : "Pendente"));
 
+            if (c.Concluida)
+            {
+                Console.WriteLine("Resumo   : " + c.GetResumo());
+            }
+
+            Console.WriteLine("\nReceita:");
+
             if (c.Receita != null)
             {
-                Console.WriteLine("\nReceita:");
-                List<string> meds = c.Receita.ListarMedicamentos();
-
-                foreach (string m in meds)
+                foreach (string m in c.Receita.ListarMedicamentos())
                 {
                     Console.WriteLine("- " + m);
                 }
             }
             else
             {
-                Console.WriteLine("\nReceita: Nenhuma");
+                Console.WriteLine("Nenhuma");
             }
 
             Console.WriteLine("=================================\n");
